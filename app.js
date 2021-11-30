@@ -7,6 +7,8 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var getUsername = require('./routes/twitterAPI/getUsername');
+var followers = require('./routes/twitterAPI/followers');
+var following = require('./routes/twitterAPI/following');
 
 var app = express();
 
@@ -23,6 +25,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/getusername',getUsername);
+app.use('/followers',followers);
+app.use('/following',following);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
